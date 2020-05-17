@@ -1,0 +1,25 @@
+﻿<Window x:Class="_17_05_20_TakeFileSystem_Composite_design_pattern.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_17_05_20_TakeFileSystem_Composite_design_pattern"
+        xmlns:ViewModels="clr-namespace:_17_05_20_TakeFileSystem_Composite_design_pattern.VModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        WindowState="Normal"
+        >
+    <Window.Resources>
+        <ViewModels:ViewModel x:Key="ViewModel"/>
+    </Window.Resources>
+    <StackPanel>
+        <Button Content="Open it in file" Command="{Binding OpenItInFile_buttonClick, Source={StaticResource ViewModel}}" Width="120"></Button>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <Border BorderBrush="AliceBlue" BorderThickness="1">
+            <TextBox TextWrapping="Wrap" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Disabled" x:Name="txtCurrenttextBox" Margin="5"  Text="{Binding TakeFileSystem, Source={StaticResource ViewModel},Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            </Border>
+        </ScrollViewer>
+
+        <Button Content="Take the file system" Command="{Binding GetFileSystem_buttonClick, Source={StaticResource ViewModel}}" Width="120"></Button>
+    </StackPanel>
+</Window>
