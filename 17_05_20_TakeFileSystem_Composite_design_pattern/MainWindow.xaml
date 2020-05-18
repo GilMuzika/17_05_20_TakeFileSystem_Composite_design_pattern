@@ -13,7 +13,10 @@
         <ViewModels:ViewModel x:Key="ViewModel"/>
     </Window.Resources>
     <StackPanel>
-        <Button Content="Open it in file" Command="{Binding OpenItInFile_buttonClick, Source={StaticResource ViewModel}}" Width="120"></Button>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Open it in file" Command="{Binding OpenItInFile_buttonClick, Source={StaticResource ViewModel}}" Padding="3" Margin="5"></Button>
+            <Button Content="Provide the start path" Command="{Binding ProvideStartPath_buttonClick, Source={StaticResource ViewModel}}" Padding="3" Margin="5"></Button>
+        </StackPanel>
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
             <Border BorderBrush="AliceBlue" BorderThickness="1">
             <TextBox TextWrapping="Wrap" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Disabled" x:Name="txtCurrenttextBox" Margin="5"  Text="{Binding TakeFileSystem, Source={StaticResource ViewModel},Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>

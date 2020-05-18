@@ -34,7 +34,7 @@ namespace _17_05_20_TakeFileSystem_Composite_design_pattern.VModels
 
         public async override Task<string> AllChildrenToString(string space)
         {
-            space += "    ";
+            space += $" ";
             return await Task.Run(async() => 
             {
 

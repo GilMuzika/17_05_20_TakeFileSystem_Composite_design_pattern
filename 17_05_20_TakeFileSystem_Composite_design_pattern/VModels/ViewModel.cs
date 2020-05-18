@@ -9,12 +9,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace _17_05_20_TakeFileSystem_Composite_design_pattern.VModels
 {
     class ViewModel : ViewModelBase
-    {        
+    {
+        private string _startPath;
 
         private string _takeFileSystem;
         public string TakeFileSystem
@@ -31,18 +33,33 @@ namespace _17_05_20_TakeFileSystem_Composite_design_pattern.VModels
 
         public ICommand OpenItInFile_buttonClick { get; set; }
 
+        public ICommand ProvideStartPath_buttonClick { get; set; }
+
         public ViewModel()
         {
             GetFileSystem_buttonClick = new RelayCommand(GetFileSystem, (object o) => { return true; });
 
             OpenItInFile_buttonClick = new RelayCommand((object o) => { Process.Start("notepad.exe", "theFileSystem.txt"); Thread.Sleep(1000); File.Delete(Directory.GetCurrentDirectory() + "/theFileSystem.txt"); }, (object o) => { if (File.Exists(Directory.GetCurrentDirectory() + "/theFileSystem.txt")) return true; else return false; });
 
+            ProvideStartPath_buttonClick = new RelayCommand((object o) => 
+            {
+                FolderBrowserDialog dialog = new FolderBrowserDialog();
+                dialog.SelectedPath = _startPath;
+                dialog.ShowDialog();
+                _startPath = dialog.SelectedPath;                
+            }, (object o) => 
+            {
+                return true; 
+            });
+
+            _startPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
         }
 
         private async void GetFileSystem(object o)
         {
 
-            Branch rootBranch = new Branch(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
+            Branch rootBranch = new Branch(_startPath);
 
             rootBranch = await GetFilesAndDirectories(rootBranch);
 
