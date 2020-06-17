@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace _17_05_20_TakeFileSystem_Composite_design_pattern.VModels
 {
+
+    /// <summary>
+    /// Composite And Builder Design Pattern With A Tree
+    /// https://www.c-sharpcorner.com/article/composite-design-pattern/
+    /// </summary>
     public abstract class Component
     {
         public string FileOrDirectory { get; protected set; }

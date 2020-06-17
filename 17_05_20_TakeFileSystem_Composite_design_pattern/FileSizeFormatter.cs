@@ -8,8 +8,6 @@ namespace _17_05_20_TakeFileSystem_Composite_design_pattern
 {
     public static class FileSizeFormatter
     {
-        public static List<long> sizesOfBrances = new List<long>();
-
         // Load all suffixes in an array  
         static readonly string[] suffixes =
         { "Bytes", "KB", "MB", "GB", "TB", "PB" };
