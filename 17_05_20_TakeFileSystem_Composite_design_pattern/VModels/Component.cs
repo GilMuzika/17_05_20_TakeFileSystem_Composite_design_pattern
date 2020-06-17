@@ -9,7 +9,9 @@ namespace _17_05_20_TakeFileSystem_Composite_design_pattern.VModels
 {
     public abstract class Component
     {
-        public string FileOrDirectory { get; set; }
+        public string FileOrDirectory { get; protected set; }
+
+        public long LengthOfFileOrDirectory { get; set; }
 
         public abstract void AddChild(Component c);
 
@@ -18,5 +20,7 @@ namespace _17_05_20_TakeFileSystem_Composite_design_pattern.VModels
         public abstract IList<Component> GetChildren();
 
         public abstract Task<string> AllChildrenToString(string space);
+
+        public abstract long GetSize();
     }
 }

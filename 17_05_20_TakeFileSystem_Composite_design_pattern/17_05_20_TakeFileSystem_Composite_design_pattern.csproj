@@ -56,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="FileSizeFormatter.cs" />
     <Compile Include="VModels\Component.cs" />
     <Compile Include="VModels\Branch.cs" />
     <Compile Include="VModels\Leaf.cs" />

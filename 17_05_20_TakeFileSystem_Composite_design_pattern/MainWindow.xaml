@@ -14,6 +14,7 @@
     </Window.Resources>
     <StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Text="{Binding IterationsCount, Source={StaticResource ViewModel},Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
             <Button Content="Open it in file" Command="{Binding OpenItInFile_buttonClick, Source={StaticResource ViewModel}}" Padding="3" Margin="5"></Button>
             <Button Content="Provide the start path" Command="{Binding ProvideStartPath_buttonClick, Source={StaticResource ViewModel}}" Padding="3" Margin="5"></Button>
         </StackPanel>
